@@ -14,7 +14,43 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@schoolinc/api-gateway/core": ["libs/api-gateway/core/src/index.ts"],
+      "@schoolinc/api-gateway/data-access": [
+        "libs/api-gateway/data-access/src/index.ts"
+      ],
+      "@schoolinc/api-gateway/feature": [
+        "libs/api-gateway/feature/src/index.ts"
+      ],
+      "@schoolinc/api-gateway/utils": ["libs/api-gateway/utils/src/index.ts"],
+      "@schoolinc/backend/auth-service/core": [
+        "libs/backend/auth-service/core/src/index.ts"
+      ],
+      "@schoolinc/backend/auth-service/data-access": [
+        "libs/backend/auth-service/data-access/src/index.ts"
+      ],
+      "@schoolinc/backend/auth-service/feature": [
+        "libs/backend/auth-service/feature/src/index.ts"
+      ],
+      "@schoolinc/backend/school-service/core": [
+        "libs/backend/school-service/core/src/index.ts"
+      ],
+      "@schoolinc/backend/school-service/data-access": [
+        "libs/backend/school-service/data-access/src/index.ts"
+      ],
+      "@schoolinc/backend/school-service/feature": [
+        "libs/backend/school-service/feature/src/index.ts"
+      ],
+      "@schoolinc/backend/user-service/core": [
+        "libs/backend/user-service/core/src/index.ts"
+      ],
+      "@schoolinc/backend/user-service/data-access": [
+        "libs/backend/user-service/data-access/src/index.ts"
+      ],
+      "@schoolinc/backend/user-service/feature": [
+        "libs/backend/user-service/feature/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
