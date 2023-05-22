@@ -1,0 +1,21 @@
+version: '3.9'
+
+services:
+  flyway_user-service-db:
+    image: flyway/flyway:latest
+    container_name: flyway_user-service-db
+    command: -url=jdbc:mysql://user-service-db:3306/${MYSQL_DATABASE}?allowPublicKeyRetrieval=true -user=${MYSQL_USER} -password=${MYSQL_PASSWORD} -connectRetries=60 -connectRetriesInterval=5 migrate
+    volumes:
+      - ../apps/backend/user-service/migrations:/flyway/sql
+    depends_on:
+      - user-service-db
+
+  flyway_school-service-db:
+    image: flyway/flyway:latest
+    container_name: flyway_school-service-db
+    command: -url=jdbc:mysql://school-service-db:3306/${MYSQL_DATABASE}?allowPublicKeyRetrieval=true -user=${MYSQL_USER} -password=${MYSQL_PASSWORD} -connectRetries=60 -connectRetriesInterval=5 migrate
+    volumes:
+      - ../apps/backend/school-service/migrations:/flyway/sql
+    depends_on:
+      - school-service-db
+

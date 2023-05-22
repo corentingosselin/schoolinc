@@ -49,7 +49,15 @@
       ],
       "@schoolinc/backend/user-service/feature": [
         "libs/backend/user-service/feature/src/index.ts"
-      ]
+      ],
+      "@schoolinc/shared/api-interfaces": [
+        "libs/shared/api-interfaces/src/index.ts"
+      ],
+      "@schoolinc/shared/message-broker": [
+        "libs/shared/message-broker/src/index.ts"
+      ],
+      "@schoolinc/shared/network": ["libs/shared/network/src/index.ts"],
+      "@schoolinc/shared/utils": ["libs/shared/utils/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

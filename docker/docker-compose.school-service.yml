@@ -1,0 +1,32 @@
+version: '3.9'
+services:
+  school-service:
+    env_file:
+      - ../.env.prod
+    build:
+      context: ../
+      dockerfile: apps/backend/school-service/Dockerfile
+    container_name: school-service
+    profiles:
+      - production
+    volumes:
+      - school-service-volume:/usr/src/app
+    restart: always
+    ports:
+      - ${SCHOOL_SERVICE_PORT}:${SCHOOL_SERVICE_PORT}
+    depends_on:
+      - school-service-db
+  school-service-db:
+    container_name: 'school-service-db'
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_ROOT_USER=${MYSQL_USER}
+    ports:
+      - '${SCHOOL_SERVICE_DB_PORT}:${SCHOOL_SERVICE_DB_PORT}'
+    volumes:
+      - school-service-db-volume:/var/lib/mysql
+volumes:
+  school-service-db-volume:
+  school-service-volume:

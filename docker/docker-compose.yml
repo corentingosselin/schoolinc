@@ -1,0 +1,35 @@
+version: '3.9'
+services:
+  api-gateway:
+    env_file:
+      - ../.env.prod
+    build:
+      context: ../
+      dockerfile: apps/backend/api-gateway/Dockerfile
+    container_name: api-gateway
+    profiles:
+      - production
+    volumes:
+      - api-gateway-volume:/usr/src/app
+    restart: always
+    ports:
+      - ${API_GATEWAY_PORT}:${API_GATEWAY_PORT}
+    depends_on:
+      - rabbitmq
+  rabbitmq:
+    container_name: 'rabbitmq'
+    image: rabbitmq:3.8-management-alpine
+    environment:
+      - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER}
+      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS}
+    ports:
+      # AMQP protocol port
+      - '${RABBITMQ_PORT}:${RABBITMQ_PORT}'
+      # HTTP management UI
+      - '15672:15672'
+    volumes:
+      - rabbitmq-volume:/var/lib/rabbitmq
+volumes:
+  rabbitmq-volume:
+  api-gateway-volume:
+name: schoolinc

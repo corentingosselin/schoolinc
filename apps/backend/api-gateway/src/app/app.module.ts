@@ -1,7 +1,14 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
+import { ApiGatewayCoreModule } from '@schoolinc/api-gateway/core';
 
 @Module({
-  imports: [],
+  imports: [
+    ApiGatewayCoreModule,
+    ConfigModule.forRoot({
+      isGlobal: true,
+    })
+  ],
   controllers: [],
   providers: [],
 })
