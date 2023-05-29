@@ -54,9 +54,4 @@ export class UserService implements IService<UserResponse, CreateUserDto> {
   findAll(): Promise<UserResponse[]> {
     throw new Error('Method not implemented.');
   }
-
-  async hasOwnership(id: string | number, ownerId: string | number): Promise<boolean> {
-    const user = await this.findOne(id as string);
-    return user.id === ownerId;
-  }
 }

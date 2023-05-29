@@ -13,11 +13,13 @@ import { ConfigService } from '@nestjs/config';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
   const msgBrokerService = app.get(MessageBrokerService);
-  app.connectMicroservice(msgBrokerService.getOptions(USER_SERVICE));
+  const clientOtions = msgBrokerService.getOptions(USER_SERVICE);
+
+  app.connectMicroservice(clientOtions);
   await app.startAllMicroservices();
-  const globalPrefix = 'api';
-  app.setGlobalPrefix(globalPrefix);
+  
   const config = app.get(ConfigService);
 
   app.useGlobalPipes(
@@ -35,7 +37,7 @@ async function bootstrap() {
   const port = config.get('USER_SERVICE_PORT') || 3200;
   await app.listen(port);
   Logger.log(
-    `🚀 User service is running on: http://localhost:${port}/${globalPrefix}`
+    `🚀 User service is running on: http://localhost:${port}`
   );
 }
 

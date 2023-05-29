@@ -10,10 +10,13 @@ import { ApiGatewayFeatureModule } from '@schoolinc/api-gateway/feature';
   imports: [
     ApiGatewayFeatureModule,
     GraphQLModule.forRoot<ApolloDriverConfig>({
+      csrfPrevention: false,
+      playground: true,
       driver: ApolloDriver,
       autoSchemaFile: true,
       include: [ApiGatewayFeatureModule],
     }),
+    
   ],
 })
 export class ApiGatewayCoreModule {}

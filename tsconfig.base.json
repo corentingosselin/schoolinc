@@ -50,6 +50,28 @@
       "@schoolinc/backend/user-service/feature": [
         "libs/backend/user-service/feature/src/index.ts"
       ],
+      "@schoolinc/frontend/core": ["libs/frontend/core/src/index.ts"],
+      "@schoolinc/frontend/feature-auth/core": [
+        "libs/frontend/feature-auth/core/src/index.ts"
+      ],
+      "@schoolinc/frontend/feature-auth/data-access": [
+        "libs/frontend/feature-auth/data-access/src/index.ts"
+      ],
+      "@schoolinc/frontend/feature-auth/feature": [
+        "libs/frontend/feature-auth/feature/src/index.ts"
+      ],
+      "@schoolinc/frontend/feature-auth/shared": [
+        "libs/frontend/feature-auth/shared/src/index.ts"
+      ],
+      "@schoolinc/frontend/feature-home/core": [
+        "libs/frontend/feature-home/core/src/index.ts"
+      ],
+      "@schoolinc/frontend/feature-home/data-access": [
+        "libs/frontend/feature-home/data-access/src/index.ts"
+      ],
+      "@schoolinc/frontend/feature-home/feature": [
+        "libs/frontend/feature-home/feature/src/index.ts"
+      ],
       "@schoolinc/shared/api-interfaces": [
         "libs/shared/api-interfaces/src/index.ts"
       ],
@@ -57,6 +79,7 @@
         "libs/shared/message-broker/src/index.ts"
       ],
       "@schoolinc/shared/network": ["libs/shared/network/src/index.ts"],
+      "@schoolinc/shared/ui/ui": ["libs/shared/ui/ui/src/index.ts"],
       "@schoolinc/shared/utils": ["libs/shared/utils/src/index.ts"]
     }
   },

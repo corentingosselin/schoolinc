@@ -4,5 +4,4 @@ export interface IService<T, CreateDto = T> {
   findOne(id: number | string): Promise<T>;
   update(entity: T): Promise<T>;
   delete(id: number | string): Promise<boolean>;
-  hasOwnership?(id: number | string, ownerId: number | string): Promise<boolean>;
 }

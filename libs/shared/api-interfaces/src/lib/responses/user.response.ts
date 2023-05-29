@@ -1,26 +1,26 @@
-import { Field, ID, InputType } from "@nestjs/graphql";
+import { Field, ID, ObjectType } from "@nestjs/graphql";
 import { UserRole } from "../interfaces/user.interface";
 
-@InputType()
+@ObjectType()
 export class UserResponse {
 
     @Field(() => ID)
-    id!: string;
+    id?: string;
     @Field()
-    firstName!: string;
+    firstName?: string;
     @Field()
-    lastName!: string;
+    lastName?: string;
     @Field()
-    email!: string;
+    email?: string;
     @Field(() => UserRole, { defaultValue: UserRole.STUDENT, nullable: true })
     role?: UserRole;
     @Field()
-    created_at!: Date;
+    created_at?: Date;
     @Field()
-    updated_at!: Date;
+    updated_at?: Date;
 }
 
-@InputType()
+@ObjectType()
 export class UserSessionResponse {
 
     @Field()

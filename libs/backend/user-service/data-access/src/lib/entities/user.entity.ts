@@ -1,11 +1,11 @@
 import { BeforeCreate, BeforeUpdate, Entity, Property } from '@mikro-orm/core';
 import { Field, ObjectType } from '@nestjs/graphql';
-import { BaseEntity, User, UserRole } from '@schoolinc/shared/api-interfaces';
+import { BaseEntity, UserRole } from '@schoolinc/shared/api-interfaces';
 import argon2 from 'argon2';
 
 @ObjectType()
 @Entity()
-export class UserEntity extends BaseEntity implements User {
+export class UserEntity extends BaseEntity {
   
   @Field()
   @Property()

@@ -16,7 +16,8 @@
         "tsConfig": "apps/backend/api-gateway/tsconfig.app.json",
         "assets": ["apps/backend/api-gateway/src/assets"],
         "isolatedConfig": true,
-        "webpackConfig": "apps/backend/api-gateway/webpack.config.js"
+        "webpackConfig": "apps/backend/api-gateway/webpack.config.js",
+        "generatePackageJson": true
       },
       "configurations": {
         "development": {},

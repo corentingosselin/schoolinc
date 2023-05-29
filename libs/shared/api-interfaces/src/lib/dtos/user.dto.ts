@@ -35,29 +35,43 @@ export class CreateUserDto  {
   role?: UserRole;
 }
 
-export class UpdateUserDto implements Partial<CreateUserDto> {
-  @IsString()
-  id!: string;
+@InputType()
+export class UpdateUserDto {
 
+  @Field({ nullable: true})
+  @IsOptional()
+  @IsString()
+  id?: string;
+
+  @Field({ nullable: true})
   @IsOptional()
   @IsString()
   firstName?: string;
 
+  @Field({ nullable: true})
   @IsOptional()
   @IsString()
   lastName?: string;
 
+  @Field({ nullable: true})
   @IsOptional()
   @IsString()
   email?: string;
 
+  @Field({ nullable: true})
   @IsOptional()
   @IsString()
   @IsPasswordSecure()
   password?: string;
 
+  @Field({ nullable: true})
   @IsOptional()
   @IsString()
   @Match('password')
   confirmPassword?: string;
+
+  @Field(() => UserRole, { nullable: true})
+  @IsOptional()
+  @IsString()
+  role?: UserRole;
 }

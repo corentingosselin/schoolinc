@@ -1,0 +1,6 @@
+<div class="home-page">
+    <h1>Student Grades</h1>
+    <button class="logout-button" (click)="logout()">Logout</button>
+
+    <schoolinc-grade-card *ngFor="let grade of grades" [className]="grade.class.id" [grade]="grade.grade"></schoolinc-grade-card>
+  </div>

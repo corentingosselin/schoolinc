@@ -4,6 +4,9 @@ export * from './lib/dtos/auth.dto';
 export * from './lib/responses/user.response';
 export * from './lib/microservices';
 export * from './lib/interfaces/user.interface';
-export * from './lib/interfaces/entity.interface';
 export * from './lib/entities/base.entity';
-
+export * from './lib/custom-scalar-date';
+export * from './lib/dtos/grade.dto';
+export * from './lib/dtos/class.dto';
+export * from './lib/responses/class.response';
+export * from './lib/responses/grade.response';

@@ -1,18 +1,14 @@
+import { Field, InputType } from '@nestjs/graphql';
 import { IsEmail, IsString } from 'class-validator';
-import { User } from '../interfaces/user.interface';
 
-type DEFAULT_OMIT =
-  | 'created_at'
-  | 'updated_at'
-  | 'id'
-  | 'confirmPassword'
-  | 'lastName'
-  | 'firstName'
-  | 'role';
-
-export class LoginUserDto implements Omit<User, DEFAULT_OMIT> {
+@InputType()
+export class LoginUserDto {
+  
+  @Field()
   @IsEmail()
   email!: string;
+
+  @Field()
   @IsString()
   password!: string;
 }

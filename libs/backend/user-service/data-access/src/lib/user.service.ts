@@ -7,7 +7,7 @@ import {
   UserResponse,
 } from '@schoolinc/shared/api-interfaces';
 import { UserEntity } from './entities/user.entity';
-import { ApolloError } from 'apollo-server-express';
+import { ApolloError, UserInputError } from 'apollo-server-express';
 
 
 @Injectable()
@@ -23,7 +23,7 @@ export class UserService {
       email: createUserDto.email,
     });
     if (userExists) {
-       throw new RpcException(new ApolloError('User already exists'));
+       throw new RpcException(new UserInputError('User already exists', ));
     }
 
     const user = new UserEntity();
@@ -37,7 +37,7 @@ export class UserService {
   async getUser(id: string) {
     const user = await this.userRepository.findOne(id);
     if (!user) {
-      throw new RpcException(new ApolloError(`User  not found`));
+      throw new RpcException(new UserInputError(`User  not found`));
     }
     return user as UserResponse;
   }
@@ -46,7 +46,7 @@ export class UserService {
   async deleteUser(id: string) {
     const user = this.userRepository.getReference(id);
     if (!user) {
-      throw new RpcException(new ApolloError(`User  not found`));
+      throw new RpcException(new UserInputError(`User  not found`));
     }
     await this.userRepository.remove(user).flush();
     return true;
@@ -54,6 +54,9 @@ export class UserService {
 
   @UseRequestContext()
   async updateUser(updateUserDto: UpdateUserDto) {
+    if(!updateUserDto.id) {
+      throw new RpcException(new UserInputError(`User id not provided`));
+    }
     const ref = this.userRepository.getReference(updateUserDto.id);
     if (!ref) {
       throw new RpcException(new ApolloError(`User not found`));
@@ -67,6 +70,18 @@ export class UserService {
   @UseRequestContext()
   async findUserByEmail(email: string) {
     const user = await this.userRepository.findOne({ email });
+    return user as UserResponse;
+  }
+
+  @UseRequestContext()
+  async findUsers(studentIds: string[]) {
+    const users = await this.userRepository.find({ id: { $in: studentIds } });
+    return users as UserResponse[];
+  }
+
+  @UseRequestContext()
+  async findUserById(userId: string) {
+    const user = await this.userRepository.findOne({ id: userId });
     return user as UserResponse;
   }
 }
